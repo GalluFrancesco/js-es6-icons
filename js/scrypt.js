@@ -113,8 +113,7 @@ const icons=[
 	}
 ];
 
-function patternIcon(icon){
-     
+function patternIcon(icon){ 
 return `<div class="container-icon">
             <i class="${icon.family} ${icon.prefix}${icon.name} ${icon.color}"></i>
             <div class="icon-name">${icon.name.toUpperCase()}</div>
@@ -125,4 +124,12 @@ const container=document.querySelector('.container');
 
 icons.forEach(function (icon) {
     container.innerHTML+=patternIcon(icon);
+})
+
+const select = document.getElementById("select-menu");
+
+select.addEventListener("change", function() {
+    const value=document.getElementById("select-menu").value;
+    //debug
+    console.log(value);
 })
