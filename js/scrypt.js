@@ -143,8 +143,8 @@ function addValuesSelect(icons, select){
 
     //per ogni valore della lista di value
     //creo un elemento html option, gli aggiungo un value
-    //e scrivo stampo lo stesso value
-    //agiungo l'elemento html option creato alla selct passata
+    //e stampo lo stesso value
+    //aggiungo l'elemento html option creato alla selct passata
     //come argomento della funzione
     valueList.forEach(function (element) {
         const value=document.createElement("option");
