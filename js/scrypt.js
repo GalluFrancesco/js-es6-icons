@@ -126,11 +126,40 @@ function stamp(iconsArray, patternIcon){
     })
 }
 
+//funzione che riempie la select, riceve l'array di icone
+//e la select da riempire
+function addValuesSelect(icons, select){
+
+    //creo una lista di value che contiene già il value all
+    const valueList=["all"];
+
+    //per ogni oggetto di icons prendo il valore di type
+    //se non è presente nella lista di value lo aggiungo
+    icons.forEach(function (icon) {
+        if(!valueList.includes(icon.type)){
+            valueList.push(icon.type);
+        }
+    })
+
+    //per ogni valore della lista di value
+    //creo un elemento html option, gli aggiungo un value
+    //e scrivo stampo lo stesso value
+    //agiungo l'elemento html option creato alla selct passata
+    //come argomento della funzione
+    valueList.forEach(function (element) {
+        const value=document.createElement("option");
+        value.setAttribute("value", `${element}`);
+        value.innerHTML= `${element}`;
+        select.append(value);
+    })
+}
+
 const container=document.querySelector('.container');
 
 stamp(icons, patternIcon);
 
 const select = document.getElementById("select-menu");
+addValuesSelect(icons, select);
 
 select.addEventListener("change", function() {
     const value=document.getElementById("select-menu").value;
