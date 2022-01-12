@@ -120,16 +120,32 @@ return `<div class="container-icon">
         </div>`
 }
 
+function stamp(iconsArray, patternIcon){
+    iconsArray.forEach(function (icon) {
+        container.innerHTML+=patternIcon(icon);
+    })
+}
+
 const container=document.querySelector('.container');
 
-icons.forEach(function (icon) {
-    container.innerHTML+=patternIcon(icon);
-})
+stamp(icons, patternIcon);
 
 const select = document.getElementById("select-menu");
 
 select.addEventListener("change", function() {
     const value=document.getElementById("select-menu").value;
-    //debug
-    console.log(value);
+
+    const iconsDisplay = icons.filter(function (icon) {
+        return icon.type===value;
+    })
+    
+    if(value!=="all"){
+        console.log(iconsDisplay)
+        container.innerHTML="";
+        stamp(iconsDisplay, patternIcon);
+    }else{
+        container.innerHTML="";
+        stamp(icons, patternIcon);
+    }
+    
 })
