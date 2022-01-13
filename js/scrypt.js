@@ -165,16 +165,9 @@ select.addEventListener("change", function() {
     const value=document.getElementById("select-menu").value;
 
     const iconsDisplay = icons.filter(function (icon) {
-        return icon.type===value;
+        return value==="all" || icon.type===value;
     })
     
-    if(value!=="all"){
-        console.log(iconsDisplay)
-        container.innerHTML="";
-        stamp(iconsDisplay, patternIcon);
-    }else{
-        container.innerHTML="";
-        stamp(icons, patternIcon);
-    }
-    
+    container.innerHTML="";
+    stamp(iconsDisplay, patternIcon);
 })
